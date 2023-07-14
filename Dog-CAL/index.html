@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dog BP</title>
+    <!-- bootstrap css -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Nav Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+        <a class="navbar-brand">Dog CAL</a>
+        <div class="collapse navbar-collapse justify-content-end">
+            <ul class="navbar-nav ml-auto nav-right">
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="docs.html">Docs</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="developers.html">Developers</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!-- body -->
+    <div class="text-center justify-content-center">
+        <div class="d-flex justify-content-center">
+            <div class="container-body boxed" id="scroll-element">
+                <canvas width="10000px" height="300px" id="canvas"></canvas>
+            </div>
+        </div>
+        
+        <div class="d-flex justify-content-center">
+            <div class="boxed mid1">
+                    <label for="drugtable">Drug: </label>
+                    <select  id="drugtable">
+                        <option value="CO">CO</option> 
+                        <option value="CV">CV</option>
+                        <option value="PV">PV</option>
+                        <option value="Epinephrine">Epinephrine</option>
+                        <option value="Norepinephrine">Norepinephrine</option>
+                        <option value="Isoprenaline">Isoprenaline</option>
+                        <option value="Acetylcholine">Acetylcholine</option>
+                        <option value="Histamine">Histamine</option>
+                        <option value="Ephedrine">Ephedrine</option>
+                        <option value="Phentolamine">Phentolamine</option>
+                        <option value="Propranolol">Propranolol</option>
+                        <option value="Cimtidine">Cimtidine</option>
+                        <option value="Mepyramine">Mepyramine</option>
+                        <option value="Atropine">Atropine</option>
+                        <option value="Unknown">Unknown</option>
+                    </select>
+                    <br>
+                <button class="btn btn-success" onclick="instill()">Instill</button>
+                <button class="btn btn-dark">Saline</button>
+            </div>
+            <div class="boxed mid2">
+                <label for="selected">Selected Drug: </label>
+                <input id="selected" type="text"> <br>
+                <!-- answer button -->
+                <button class="btn btn-success" id="answer-btn" data-toggle="modal" data-target="#exampleModal">Answer</button>
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Find Unknown</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body" id="final-body">
+                                <form action="">
+                                    <label for="data">Choose from:</label>&nbsp;
+                                    <select id="modaldrugs">
+                                        <option value="Epinephrine">Epinephrine</option>
+                                        <option value="Norepinephrine">Norepinephrine</option>
+                                        <option value="Isoprenaline">Isoprenaline</option>
+                                        <option value="Acetylcholine">Acetylcholine</option>
+                                        <option value="Histamine">Histamine</option>
+                                        <option value="Ephedrine">Ephedrine</option>
+                                        <option value="Phentolamine">Phentolamine</option>
+                                        <option value="Propranolol">Propranolol</option>
+                                        <option value="Cimtidine">Cimtidine</option>
+                                        <option value="Mepyramine">Mepyramine</option>
+                                        <option value="Atropine">Atropine</option>
+                                    </select>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>&nbsp;&nbsp;
+                                <button type="button" class="btn btn-primary" id="final-save" onclick="answer()">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button onclick="cleared()" class="btn btn-dark">Clear Antagonists</button>
+            </div>
+            <div class="boxed mid3">
+                <img src="images/dog_img.jpg" alt="">
+            </div>
+        </div>
+        
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
+        integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
+        integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+        crossorigin="anonymous"></script>
+    <script src="index.js"></script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+body {
+    overflow-x: hidden !important;
+}
+
+#ruler {
+    position: absolute;
+    top: 0%;
+    z-index: 5;
+    width: 6%;
+    height: 100%;
+    right: 0%;
+    transform: rotateZ(180deg);
+}
+
+
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+h1,
+h4 {
+    color: black;
+}
+
+/* navbar */
+
+.navbar-brand {
+    padding-left: 10%;
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
+.nav-item {
+    padding: 0 45px 0 0;
+}
+
+.nav-right {
+    padding-right: 9%;
+}
+
+.nav-link {
+    text-decoration: none;
+    font-size: 1.2rem;
+    color: white !important;
+    font-weight: 400;
+}
+
+/* adds a margin around the divs used! */
+.boxed {
+    border: 2px solid black;
+    margin: 1%;
+    padding: 0;
+}
+
+#canvas {
+    background-color: black;
+}
+.container-body {
+    max-height: 550px;
+    max-width: 600px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+
+.vessel {
+    position: relative;
+}
+
+.end1 input {
+    width: 40%;
+    height: 65%;
+    margin: 3% 9% 2% 2%;
+}
+
+.matching {
+    width: 20%;
+    padding: 1%;
+}
+.matching p {
+    font-size: larger;
+    font-weight: 600;
+    margin: 0;
+}
+
+.matching button {
+    margin-top: 5%;
+}
+.image-container img {
+    margin:0;
+    width: 100%;
+}
+
+.image-container{
+    margin-top: 5%;
+}
+
+.end1, .end2 {
+    padding: 1%;
+}
+
+.end2 {
+    padding: 1.5%;
+}
+
+.end2 button{
+    display: inline;
+    margin: 0 3% 0 0;
+}
+
+.end1 label{
+    font-size: larger;
+    margin-top: 2.5%;
+}
+
+#final-save {
+    margin-right: 3%;
+}
+

@@ -1,0 +1,154 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Histamine Bioassay</title>
+    <!-- bootstrap css -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Nav Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+        <a class="navbar-brand">Guinea Pig CAL</a>
+        <div class="collapse navbar-collapse justify-content-end">
+            <ul class="navbar-nav ml-auto nav-right">
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="docs.html">Docs</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="developers.html">Developers</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!-- body -->
+    <div class="d-flex justify-content-center">
+        <div class="vessel boxed">
+            <div class="container-body" id="scroll-element">
+                <canvas width="5000px" height="400px" id="canvas"></canvas>
+                
+            </div>
+            <img onclick="preventscroll()" id="ruler" class="r0" src="images/newruler.png" alt="">
+        </div>
+        
+        <div class="boxed matching">
+            <div>
+                <p>Matching assay</p>
+                <button disabled="true" class="btn btn-success" id="st" onclick="sta()">Standard</button>
+                <button disabled="true" class="btn btn-dark" id="un" onclick="unk()">Unknown</button><br>
+                <button disabled="true" class="btn btn-success" id="do" onclick="dou()">Double Std</button>
+                <button disabled="true" class="btn btn-success" id="ha" onclick="hal()">Half Std</button>
+            </div>
+            <div class="image-container boxed">
+                <img src="images/ileum.jpg" alt="">
+            </div>
+
+        </div>
+    </div>
+    <div class="d-flex justify-content-evenly">
+        <div class="boxed end1 d-flex justify-content-center">
+            <form action="">
+                <label for="data">Dose<span id="unit">(mcg)</span>:</label>
+                <input list="numbers" id="data">
+            </form>
+                    
+            <button class="btn btn-success" id="instill-btn" onclick="normalDrug()">Instill</button>
+            <datalist id="numbers">
+                <option value="0.1">0.1</option>
+                <option value="0.2">0.2</option>
+                <option value="0.4">0.4</option>
+                <option value="0.8">0.8</option>
+                <option value="1.6">1.6</option>
+                <option value="3.2">3.2</option>
+                <option value="6.4">6.4</option>
+                <option value="12">12</option>
+                <option value="24">24</option>
+                <option value="48">48</option>
+                <option value="96">96</option>
+            </datalist>
+        </div>
+        <div class="boxed end2 d-flex justify-content-evenly">
+            <button class="btn btn-success" id="" data-toggle="modal" data-target="#exampleModal">M.assay</button>
+            
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Standard dose</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="">
+                                <label for="data">Dose(mcg):</label>&nbsp;
+                                <input list="numbers" type="number" id="standard-val">
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>&nbsp;&nbsp;
+                            <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="getStandard()">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- modal ends -->
+            <button class="btn btn-dark" id="next" data-toggle="modal" data-target="#exampleModal1" disabled="true">Next</button>
+            
+            <!-- Modal for next-->
+            <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel1">Answer</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body" id="final-body" style="white-space: pre-line;">
+                            <form action="">
+                                <label for="data">Concentration(mcg/ml):</label>&nbsp;
+                                <input type="number" id="next-val">
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" onclick="check()" id="final-save">Save</button>
+                            <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>&nbsp;&nbsp;
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- modal ends -->
+            <button class="btn btn-success" id="new" onclick="reload()">New</button>
+        </div>
+    </div>
+    
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
+        integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
+        integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+        crossorigin="anonymous"></script>
+        <script
+        src="https://code.jquery.com/jquery-3.6.1.js"
+        integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+        crossorigin="anonymous"></script>
+    
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js" integrity="sha256-xLD7nhI62fcsEZK2/v8LsBcb4lG7dgULkuXoXB/j91c=" crossorigin="anonymous"></script>
+    <script src="jquery.ui.touch-punch.min.js"></script>
+    <script src="index.js"></script>
+    
+</body>
+</html>

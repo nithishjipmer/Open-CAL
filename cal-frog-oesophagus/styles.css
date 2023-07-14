@@ -1,0 +1,169 @@
+body {
+    overflow-x: hidden !important;
+    /* Hide horizontal scrollbar */
+}
+
+h1,
+h4 {
+    color: black;
+}
+
+/* navbar */
+
+.navbar-brand {
+    padding-left: 10%;
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
+.nav-item {
+    padding: 0 45px 0 0;
+}
+
+.nav-right {
+    padding-right: 9%;
+}
+
+.nav-link {
+    text-decoration: none;
+    font-size: 1.2rem;
+    color: white !important;
+    font-weight: 400;
+}
+
+/* adds a margin around the divs used! */
+.boxed {
+    border: 2px solid black;
+    margin: 2%;
+    padding: 0;
+}
+
+.head1 label {
+    font-size: larger;
+    font-weight: 600;
+}
+
+.time-entry {
+    width: 100%;
+    height: 80%;
+}
+
+#frog-pic, #frog-field{
+    width: 100%;
+}
+
+#frog-field{
+    position: relative;
+    height: 70%;
+}
+
+#frog-pic {
+    height: 100%;
+}
+
+.storage h4 {
+    margin: 0;
+}
+
+#history {
+    background-color: white;
+    color: black;
+    font-size: large;
+    margin-bottom: 3%;
+}
+
+.image-container {
+    position: relative;
+    padding: 0;
+}
+
+.labels {
+    margin-top: 5%;
+}
+
+.frognum {
+    padding-right: 0;
+    margin: 7% 0 0 0;
+    font-size: xx-large;
+}
+
+
+.end3 p{
+    margin: 3% 0 0 0;
+    font-size: xx-large;
+    color: green;
+    font-weight: 600;
+}
+
+.end3 {
+    padding: 1%;
+    min-width: 16%;
+}
+.end2 {
+    padding: 0.2%;
+    min-width: 16%;
+}
+
+.end4 button{
+    margin: 6%;
+}
+.end1 button {
+    margin: 6%;
+}
+
+
+form {
+    margin: 6% 0 0 0;
+    font-size: larger;
+}
+
+
+.end1, .end4 {
+    padding: 1.5%;
+}
+
+
+.storage {
+    /* background-color: #198754; */
+    background-color: black;
+}
+.storage h4 {
+    color: white;
+    padding: 3% 0 3% 0;
+}
+
+.druglabel p {
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin: 8% 0 0 0;
+}
+
+
+#button-start, #button-stop, #button-reset {
+    margin-right: 5%;
+}
+
+
+
+#ball {
+    position: absolute;
+    width: 5%;
+    background-color: transparent;
+    top: 11%;
+    left: 50%;
+    border-radius: 100%;
+}
+
+.instill {
+    margin: 3% 0 3% 0   ;
+}
+
+.top1 {
+    max-height: 40% !important;
+}
+
+@media only screen and (max-width: 900px) and (orientation: landscape) {
+    .end3 p {
+        margin-top: 7%;
+    }
+}
